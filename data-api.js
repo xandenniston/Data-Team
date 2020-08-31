@@ -115,13 +115,19 @@ class Category {
   * @property {bool} temperatureControl - if temperature control is needed 
   * @property {bool} snapEligible - if it is SNAP eligible 
   * @property {bool} testingRequired - if it requires testing 
+  * @property {array} requirements - array of strings of additional information
   */
 class Entry {
-    constructor(name, description, examples, license, temperature, snap, testing) {
+    constructor(name, description, examples, license, temperature, snap, testing, requirements) {
         this.type = "entry";
         this.name = name;
         this.description = description;
-        // and so on...
+        this.examples = examples;
+        this.license = license;
+        this.temperature = temperature;
+        this.snap = snap;
+        this.testing = testing;
+        this.requirements = requirements;
     }
 }
 
