@@ -4,34 +4,39 @@ var data = null;
  *  Retrieves the data from the JSON file 
  */
 function fetchData() {
-    data = {
-        "Root": {
-            type: "category",
-            name: "root", 
-            children: ["Test Category"]
-        },
-        "Test Category": {
-            type: "category",
-            name: "Test Category",
-            children: [
-                "Test Category/Test SubCategory", 
-                "Test Entry"
-            ]
-        },
-        "Test Category/Test Subcategory": {
-            type: "category",
-            name: "Test Category/Test Subcategory",
-            children: []
-        },
-        "Test Entry": {
-            type: "entry",
-            name: "Test Entry",
-            description: "This is a test entry",
-            examples: "",
-            license: false,
-            temperatureControl: false,
-            snapEligible: false,
-            testingRequired: false
+    data ={
+        "alerts":["Example Alert!","Covid Prevention..."],
+        "updates":["Subcategory is now a Test subcategory"],
+        "data":
+        {
+            "Root": {
+                type: "category",
+                name: "root", 
+                children: ["Test Category"]
+            },
+            "Test Category": {
+                type: "category",
+                name: "Test Category",
+                children: [
+                    "Test Category/Test SubCategory", 
+                    "Test Entry"
+                ]
+            },
+            "Test Category/Test Subcategory": {
+                type: "category",
+                name: "Test Category/Test Subcategory",
+                children: []
+            },
+            "Test Entry": {
+                type: "entry",
+                name: "Test Entry",
+                description: "This is a test entry",
+                examples: "",
+                license: false,
+                temperatureControl: false,
+                snapEligible: false,
+                testingRequired: false
+            }
         }
     }
     return;
@@ -40,6 +45,21 @@ function fetchData() {
     });
 }
 
+/**
+ * @function getAlerts
+ * Gets the array of Alerts from the JSON data.
+ */
+function getAlerts(){
+    return data.alerts;
+}
+
+/**
+ * @function getUpdates
+ * gets the array of updates from the JSON data.
+ */
+function getUpdates(){
+    return data.updates;
+}
 /** @function search
  *  Performs a "fuzzy" search for the specified terms, which 
  *  is probably a string of space-separated words
@@ -52,7 +72,7 @@ function search(terms) {
     return ["Chickens (> 100)", "Chickens (< 100)", "Eggs"];
 }
 
-/** @function get(identifier)
+/** @function getDataNode(identifier)
  *  returns the specified entry in the category 
  *  tree.  This will either be a entry node or 
  *  a category node.  The root of the tree 
@@ -63,7 +83,7 @@ function search(terms) {
  *  @returns the entry or category, or undefined if it 
  *  does not exist
  */
-function get(identifier) {
+function getDataNode(identifier) {
     if(data === null) throw "Data not loaded";
     // TODO: Implement
     return data.entries[identifier];
@@ -105,4 +125,4 @@ class Entry {
     }
 }
 
-export {fetchData, search, get, Category, Entry};
+export {fetchData, search, getDataNode, getAlerts, getUpdates, Category, Entry};
