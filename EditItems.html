@@ -5,11 +5,12 @@
     <title>Farmer's Market Application</title>
 </head>
 <body>
+    <iframe id="hiddenElementName" src="JSONCategoriesData.txt" onload="fetchData();" style="display: none;"></iframe>
     <div style="text-align:center;">
         <p>Header</p>
         <form>
             <p>
-                <input id="makeChanges" type="button" value="Make changes" />
+                <input id="makeChanges" type="button" value="Make changes" onclick="OnUserClickAddItem();" />
             </p>
             <p>
                 <label>Name</label>
@@ -37,11 +38,11 @@
             </p>
             <p>
                 <label>Needs tested</label>
-                <input id="NeedsTested" type="checkbox" />
+                <input id="needsTested" type="checkbox" />
             </p>
             <p>
                 <label>Category</label>
-                <select id="category">
+                <select id="Category">
                     <option>Example1</option>
                     <option>Example2</option>
                     <option>Example3</option>
@@ -50,6 +51,23 @@
                 </select>
             </p>
         </form>
+        <script>
+            function OnUserClickAddItem()
+            {
+                let name = document.getElementById( "name" );
+                let description = document.getElementById( "description" );
+                let example = document.getElementById( "examples" );
+                let needsLicense = document.getElementById( "needsLicense" );
+                let needsTemperatureControl = document.getElementById( "needsTemperatureControl" );
+                let temperatureControl = document.getElementById( "temperatureControl" );
+                let snapEligiable = document.getElementById( "snapEligable" );
+                let needsTested = document.getElementById(" needsTested");
+
+                addFoodItemToDictionary( name.textContent, description.textContent, example.textContent,
+                                        needsLicense.checked, needsTemperatureControl.checked, temperatureControl.checked,
+                                        snapEligiable.checked, needsTested.checked );
+            }
+        </script>
     </div>
 </body>
 </html>
