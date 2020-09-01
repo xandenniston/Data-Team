@@ -8,10 +8,30 @@
     <iframe id="hiddenElementName" src="JSONCategoriesData.txt" onload="fetchData();" style="display: none;"></iframe>
     <div style="text-align:center;">
         <p>Header</p>
+        <h2>Add or Edit Items</h2>
+        <ul style="list-style-position: inside;">Item List <br> <span style="font-size:.75em">Click on a item to edit it</span>
+            <li>Category 1</li>
+            <ul>
+            	<li><a href="" class="item">Item 1</a></li>
+            	<li><a href="" class = "item">Item 2</a></li>
+            	<li><a href="" class = "item">Item 3</a></li>
+            </ul>
+            <li>Category 2</li>
+            <ul>
+            	<li><a href="" class = "item">Item 4</a></li>
+            	<li><a href="" class = "item">Item 5</a></li>
+            	<li><a href="" class = "item">Item 6</a></li>
+            </ul>
+            <li>Category 3</li>
+            <ul>
+            	<li><a href="" class = "item">Item 7</a></li>
+            	<li><a href="" class = "item">Item 8</a></li>
+            	<li><a href="" class = "item">Item 9</a></li>
+            	<li><a href="" class = "item">Item 10</a></li>
+            </ul>
+        </ul>
         <form>
-            <p>
-                <input id="makeChanges" type="button" value="Make changes" onclick="OnUserClickAddItem();" />
-            </p>
+            
             <p>
                 <label>Name</label>
                 <input id="name" type="text" />
@@ -50,8 +70,22 @@
                     <option>Example5</option>
                 </select>
             </p>
+            <p>
+                <input id="makeChanges" type="button" value="Add Item" onclick="OnUserClickAddItem();" />
+            </p>
         </form>
         <script>
+        	items = document.getElementsByClassName('item');
+        	for(var i = 0; i < items.length; i++) {
+	            var item = items[i];
+	            item.onclick = function(e) {
+	            	e.preventDefault();
+	                document.getElementById( "name" ).value = item.innerHTML;
+	                document.getElementById( "makeChanges" ).value = "Edit Item";
+	            }
+	        }
+
+
             function OnUserClickAddItem()
             {
                 let name = document.getElementById( "name" );

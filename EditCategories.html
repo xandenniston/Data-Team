@@ -7,15 +7,21 @@
 <body>
     <div style="text-align:center;">
         <p>Header</p>
+        <h2>Add or Edit Categories</h2>
+        <ul style="list-style-position: inside;">Category List
+            <li><a href="">Category 1</a></li>
+            <li><a href="">Category 2</a></li>
+            <li><a href="">Category 3</a></li>
+        </ul>
         <form>
-            <p>
-                <input id="makeChanges" type="button" value="Make changes" />
-            </p>
             <p>
                 <label>Name</label>
                 <input id="name" type="text" />
             </p>
             <p>
+                <input id="makeChanges" type="button" value="Add Category" />
+            </p>
+            <!-- <p>
                 <label>Description</label>
                 <input id="description" type="text" />
             </p>
@@ -48,7 +54,7 @@
                     <option>Example4</option>
                     <option>Example5</option>
                 </select>
-            </p>
+            </p> -->
         </form>
 		<script>
 			function OnUserClickAddCategory()
