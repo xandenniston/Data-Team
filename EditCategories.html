@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Farmer's Market Application</title>
+</head>
+<body>
+    <div style="text-align:center;">
+        <p>Header</p>
+        <form>
+            <p>
+                <input id="makeChanges" type="button" value="Make changes" />
+            </p>
+            <p>
+                <label>Name</label>
+                <input id="name" type="text" />
+            </p>
+            <p>
+                <label>Description</label>
+                <input id="description" type="text" />
+            </p>
+            <p>
+                <label>Examples</label>
+                <input id="examples" type="text" />
+            </p>
+            <p>
+                <label>Needs license</label>
+                <input id="needsLicense" type="checkbox" />
+            </p>
+            <p>
+                <label>Needs temperature Control</label>
+                <input id="temperatureControl" type="checkbox" />
+            </p>
+            <p>
+                <label>Is snap eligible</label>
+                <input id="snapEligible" type="checkbox" />
+            </p>
+            <p>
+                <label>Needs tested</label>
+                <input id="NeedsTested" type="checkbox" />
+            </p>
+            <p>
+                <label>Category</label>
+                <select id="category">
+                    <option>Example1</option>
+                    <option>Example2</option>
+                    <option>Example3</option>
+                    <option>Example4</option>
+                    <option>Example5</option>
+                </select>
+            </p>
+        </form>
+		<script>
+			function OnUserClickAddCategory()
+			{
+				let categoryName = document.getElementById("CategoryName");
+				let categoryType = document.getElementById("Type");
+				addCategory(categoryName.textContent, categoryType.textContent, null);
+
+			}
+		</script>
+    </div>
+</body>
+</html>

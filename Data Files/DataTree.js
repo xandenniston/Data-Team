@@ -29,3 +29,9 @@ function jsonify(){
     };
     return output;
 }
+
+function addCategory(name, type, children){
+		//TODO
+	
+
+}
