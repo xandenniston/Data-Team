@@ -3,7 +3,7 @@ import {  node, tree, getChildren, findNode, addChild } from './TreeNode.js';
 
 
 
-var dict = new Object();
+var dict;
 var root = new tree();
 
 /**@function addFoodItemToDictionary this function adds an item to the dictionary with the name as the key
@@ -23,11 +23,13 @@ function addFoodItemToDictionary(name, description, examples, license, temperatu
 }
 
 function jsonify(){
+    var dictstr = JSON.stringify(dict);
+    var rootStr = JSON.stringify(root);
     var output = {
-        JSON.stringify(dict),
-        JSON.stringify(root)
+        dictstr,
+        rootStr
     };
     return output;
 }
 
-export{addFoodItemToDictionary, jsonify};
+export{addFoodItemToDictionary, jsonify}
