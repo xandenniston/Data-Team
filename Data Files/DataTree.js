@@ -31,3 +31,8 @@ function jsonify(){
 }
 
 export{addFoodItemToDictionary, jsonify};
+function addCategory(name, type, children){
+		//TODO
+	
+
+}

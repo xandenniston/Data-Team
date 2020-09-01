@@ -89,6 +89,16 @@ function getDataNode(identifier) {
     return data.entries[identifier];
 }
 
+/** @function ParseJSON
+ * ParseJSON object into the tree
+ * @param {JSONObject} unparsedJSON - the unparsed JSON object
+ * @returns the tree node to the top of the tree?
+ */
+function ParseJSON(unparsedJSON) {
+    // TODO: ParseJSON
+    return null; //parsed JSON object;
+}
+
 /** @class Category 
  * Represents a category in the tree, has a 
  * "children" property which is all sub-categories or leafs 
