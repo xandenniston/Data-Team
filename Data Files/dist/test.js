@@ -36,6 +36,14 @@ function testAddChild(){
 }
 
 
-testAddChild();
+function testaddFoodItemToDictionary(){
+    var dict = addFoodItemToDictionary("testName", "testDescription", "testExamples",true,true,true,true,[])
+    assertEqual("testDescription",dict["testName"].description, "testDescription");
+    assertEqual(true, dict["testName"].snap, "testBools");
+}
+
+testaddFoodItemToDictionary();
+
+//testAddChild();
 testNodeConstructor();
 testTreeConstructor();
