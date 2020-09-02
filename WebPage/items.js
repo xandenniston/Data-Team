@@ -1,15 +1,10 @@
 $( document ).ready(function() {
-    var rightArrow = "▷";
-    var downArrow = "▽";
-
     $("#addItems").on("click", function() {
-        changeArrow($(this));
-        $(this).parent().find("#items-section").toggle();
+        changeArrow($(this), "#items-section");
     });
 
     $(".category").on("click", function(){
-    	changeArrow($(this));
-    	$(this).parent().find(".item-list").toggle();
+    	changeArrow($(this), ".item-list");
     });
 
     $(".item").on("click", function(){
@@ -43,8 +38,7 @@ $( document ).ready(function() {
     });
 
     $("#search").on("click", function(){
-    	changeArrow($("#search"));
-    	$(this).parent().find("form").toggle();
+    	changeArrow($("#search"), "form");
     });
 
     $("#category").on("change", function(){
@@ -95,21 +89,24 @@ $( document ).ready(function() {
     });
 
     $("#addCategories").on("click", function() {
-        changeArrow($(this));
-        $(this).parent().find("#category-form").toggle();
+        changeArrow($(this), "#category-form");
     });
 
     $("#addSubcategories").on("click", function() {
-        changeArrow($(this));
-        $(this).parent().find("#subcategory-form").toggle();
+        changeArrow($(this), "#subcategory-form");
     });
 
-    function changeArrow(obj){
+    function changeArrow(obj, toggleArea){
+        var rightArrow = "▷";
+        var downArrow = "▽";
+        
     	var $arrow = obj.find("span");
     	if ($arrow.text() === rightArrow)
     		$arrow.text(downArrow)
     	else 
     		$arrow.text(rightArrow);
+
+        obj.parent().find(toggleArea).toggle();
     }
 
     function changeSubcategories($category, $subcategories) {
