@@ -31,7 +31,49 @@
             </ul>
         </ul>
         <form>
-            
+            <p>
+                <label>Search</label>
+            </p>
+            <p>
+                <label>Search by Item Name</label>
+                <input id="textSearchItem" type="text" />
+            </p>
+            <p>
+                <label>Category</label>
+                <select id="searchCategory">
+                    <option>Example1</option>
+                    <option>Example2</option>
+                    <option>Example3</option>
+                    <option>Example4</option>
+                    <option>Example5</option>
+                </select>
+            </p>
+            <p>
+                <label>Sub-Category</label>
+                <select id="searchSub">
+                    <option>Example1</option>
+                    <option>Example2</option>
+                    <option>Example3</option>
+                    <option>Example4</option>
+                    <option>Example5</option>
+                </select>
+            </p>
+            <p>
+                <label>Item</label>
+                <select id="searchItem">
+                    <option>Example1</option>
+                    <option>Example2</option>
+                    <option>Example3</option>
+                    <option>Example4</option>
+                    <option>Example5</option>
+                </select>
+            </p>
+            <p>
+                <input id="searchButton" type="button" value="Search" onclick="" />
+            </p>
+            <p>
+                <label>Edit/Add Information</label>
+            </p>
             <p>
                 <label>Name</label>
                 <input id="name" type="text" />
@@ -43,6 +85,7 @@
             <p>
                 <label>Examples</label>
                 <input id="examples" type="text" />
+                <br>+Add Example
             </p>
             <p>
                 <label>Needs license</label>
@@ -69,6 +112,17 @@
                     <option>Example4</option>
                     <option>Example5</option>
                 </select>
+            </p>
+            <p>
+                <label>Sub-Category</label>
+                <select id="Category">
+                    <option>Example1</option>
+                    <option>Example2</option>
+                    <option>Example3</option>
+                    <option>Example4</option>
+                    <option>Example5</option>
+                </select>
+                <br>(js to be based on selected Category)
             </p>
             <p>
                 <input id="makeChanges" type="button" value="Add Item" onclick="OnUserClickAddItem();" />
