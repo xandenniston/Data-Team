@@ -11,13 +11,31 @@ function assertEqual(expected, actual, testname){
         var p = document.createElement('p');
         p.textContent = `${testname} failed, expected ${expected}, was ${actual}`;
     }
+    console.log(p);
 }
 
 function testNodeConstructor(){
-    var node = new Node("testNode");
-    assertEqual("testNode",node.name, "testNodeConstructor");
-    assertEqual(null,node.parentNode,"testNodeConstructor");
-    assertEqual([],node.childNodes,"testNodeConstructor");
+    var n = new node("testNode", "testType");
+    assertEqual("testNode",n.name, "testNodeConstructorName");
+    assertEqual(null,n.parent,"testNodeConstructorParent");
+    assertEqual([].length,n.children.length,"testNodeConstructorChildren");
 }
 
+function testTreeConstructor(){
+    var t = new tree("testRoot");
+    assertEqual("testRoot",t.root.name, "testTreeConstructorName");
+    assertEqual(null,t.root.parent,"TestRootNodeParentNull");
+
+}
+
+function testAddChild(){
+    var r = new tree("root");
+    var child = new node ("child", "child");
+    addChild("root", child);
+    assertEqual("child",r.root.children[0].name, "testAddChild");
+}
+
+
+testAddChild();
 testNodeConstructor();
+testTreeConstructor();

@@ -3,20 +3,22 @@
  * 
  */
 class node {
-    constructor(name) {
+    constructor(name, type) {
         this.name = name;
         this.parent = null;
         this.children = [];
+        this.type = type;
     }
 }
 
 
 class tree {
     constructor(name) {
-        var node = new Node(name);
-        this.root = node;
+        var n = new node(name, "root");
+        this.root = n;
     }
 }
+
 
 /** @function getChildren this retrieves the children of a given category
  * 
@@ -31,7 +33,7 @@ function getChildren(path){
 
 function findNode(path){
     var pathString = new String();
-    var current = root;
+    var current = tree.root;
     pathString = path;
 
     //goes through the path to the requested category
@@ -49,13 +51,13 @@ function findNode(path){
             }
         });
     }
-
     return current;
+    
 }
 
 function addChild(path, child){
-    var node = findNode(path);
-    node.children[node.children.length +1] = child;
+    var n = findNode(path);
+    n.children[node.children.length +1] = child;
 }
 
 
