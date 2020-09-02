@@ -1,5 +1,0 @@
-.category {list-style-type: none; cursor: pointer;}
-#addItems, #search, #addExample, .remove-example, #addCategories, #addSubcategories {cursor: pointer;}
-.item-list {list-style-position: inside;}
-.item {cursor: pointer; color: blue; text-decoration: underline;}
-.item:hover {color: darkblue;}
