@@ -2,78 +2,84 @@
 
 <html lang="en">
 <head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Farmer's Market Application</title>
 </head>
 <body>
     <iframe id="hiddenElementName" src="JSONCategoriesData.txt" onload="fetchData();" style="display: none;"></iframe>
     <div style="text-align:center;">
         <p>Header</p>
+        <hr>
         <h2>Add or Edit Items</h2>
-        <ul style="list-style-position: inside;">Item List <br> <span style="font-size:.75em">Click on a item to edit it</span>
-            <li>Category 1</li>
-            <ul>
-            	<li><a href="" class="item">Item 1</a></li>
-            	<li><a href="" class = "item">Item 2</a></li>
-            	<li><a href="" class = "item">Item 3</a></li>
+        <div id="search-section">
+	        <h3 id="search"><span>▷</span> Search</h3>
+	        <form style="display: none;">
+	            <p>
+	                <label>Search by Item Name</label>
+	                <input id="textSearchItem" type="text" />
+	            </p>
+	            <p>
+	                <label>Category</label>
+	                <select id="searchCategory">
+	                    <option>Select</option>
+	                    <option>Category 1</option>
+	                    <option>Category 2</option>
+	                    <option>Category 3</option>
+	                </select>
+	            </p>
+	            <p>
+	                <label>Sub-Category</label>
+	                <select id="searchSubcategory" disabled>
+	                    <option>Select Category</option>
+	                </select>
+	            </p>
+	            <p>
+	                <label>Item</label>
+	                <select id="searchItem">
+	                    <option>Example1</option>
+	                    <option>Example2</option>
+	                    <option>Example3</option>
+	                    <option>Example4</option>
+	                    <option>Example5</option>
+	                </select>
+	            </p>
+	            <p>
+	                <input id="searchButton" type="button" value="Search" onclick="" />
+	            </p>
+	        </form>
+	    </div>
+        <h3>Item List <br> <span style="font-size:.75em">Click on a item to edit it</h3>
+    	<div class="category-list">
+            <li class="category"><span>▷</span> Category 1</li>
+            <ul style="display: none;" class="item-list">
+            	<li class="item">Item 1</li>
+            	<li class="item">Item 2</li>
+            	<li class="item">Item 3</li>
             </ul>
-            <li>Category 2</li>
-            <ul>
-            	<li><a href="" class = "item">Item 4</a></li>
-            	<li><a href="" class = "item">Item 5</a></li>
-            	<li><a href="" class = "item">Item 6</a></li>
+    	</div>
+    	<div class="category-list">
+            <li class="category"><span>▷</span> Category 2</li>
+            <ul style="display: none;" class="item-list">
+            	<li class="item">Item 4</li>
+            	<li class="item">Item 5</li>
+            	<li class="item">Item 6</li>
             </ul>
-            <li>Category 3</li>
-            <ul>
-            	<li><a href="" class = "item">Item 7</a></li>
-            	<li><a href="" class = "item">Item 8</a></li>
-            	<li><a href="" class = "item">Item 9</a></li>
-            	<li><a href="" class = "item">Item 10</a></li>
+        </div>
+    	<div class="category-list">
+            <li class="category"><span>▷</span> Category 3</li>
+            <ul style="display: none;" class="item-list">
+            	<li class="item">Item 7</li>
+            	<li class="item">Item 8</li>
+            	<li class="item">Item 9</li>
+            	<li class="item">Item 10</li>
             </ul>
-        </ul>
+        </div>
+        <p>
+            <input id="clearSelection" type="button" value="Clear Selection" style="display: none;" />
+        </p>
+        
+        <h3><span id="searchAddEdit">Add</span> Information</h3>
         <form>
-            <p>
-                <label>Search</label>
-            </p>
-            <p>
-                <label>Search by Item Name</label>
-                <input id="textSearchItem" type="text" />
-            </p>
-            <p>
-                <label>Category</label>
-                <select id="searchCategory">
-                    <option>Example1</option>
-                    <option>Example2</option>
-                    <option>Example3</option>
-                    <option>Example4</option>
-                    <option>Example5</option>
-                </select>
-            </p>
-            <p>
-                <label>Sub-Category</label>
-                <select id="searchSub">
-                    <option>Example1</option>
-                    <option>Example2</option>
-                    <option>Example3</option>
-                    <option>Example4</option>
-                    <option>Example5</option>
-                </select>
-            </p>
-            <p>
-                <label>Item</label>
-                <select id="searchItem">
-                    <option>Example1</option>
-                    <option>Example2</option>
-                    <option>Example3</option>
-                    <option>Example4</option>
-                    <option>Example5</option>
-                </select>
-            </p>
-            <p>
-                <input id="searchButton" type="button" value="Search" onclick="" />
-            </p>
-            <p>
-                <label>Edit/Add Information</label>
-            </p>
             <p>
                 <label>Name</label>
                 <input id="name" type="text" />
@@ -83,63 +89,145 @@
                 <input id="description" type="text" />
             </p>
             <p>
-                <label>Examples</label>
+                <label>Examples</label><br>
                 <input id="examples" type="text" />
-                <br>+Add Example
-            </p>
-            <p>
-                <label>Needs license</label>
-                <input id="needsLicense" type="checkbox" />
-            </p>
-            <p>
-                <label>Needs temperature Control</label>
-                <input id="temperatureControl" type="checkbox" />
-            </p>
-            <p>
-                <label>Is snap eligible</label>
-                <input id="snapEligible" type="checkbox" />
-            </p>
-            <p>
-                <label>Needs tested</label>
-                <input id="needsTested" type="checkbox" />
+                <br><span id="addExample">+ Add Example</span>
             </p>
             <p>
                 <label>Category</label>
-                <select id="Category">
-                    <option>Example1</option>
-                    <option>Example2</option>
-                    <option>Example3</option>
-                    <option>Example4</option>
-                    <option>Example5</option>
+                <select id="category">
+                	<option>Select</option>
+                    <option>Category 1</option>
+                    <option>Category 2</option>
+                    <option>Category 3</option>
                 </select>
             </p>
             <p>
                 <label>Sub-Category</label>
-                <select id="Category">
-                    <option>Example1</option>
-                    <option>Example2</option>
-                    <option>Example3</option>
-                    <option>Example4</option>
-                    <option>Example5</option>
+                <select id="subcategory" disabled>
+                	<option>Select a Category</option>
                 </select>
-                <br>(js to be based on selected Category)
             </p>
+            <p>
+                <label>Does it need a license?</label>
+                <input id="needsLicense" type="checkbox" />
+            </p>
+            <p>
+                <label>Does it need temperature control?</label>
+                <input id="temperatureControl" type="checkbox" />
+            </p>
+            <p>
+                <label>Is it SNAP eligible?</label>
+                <input id="snapEligible" type="checkbox" />
+            </p>
+            <p>
+                <label>Does it need tested?</label>
+                <input id="needsTested" type="checkbox" />
+            </p>
+            
             <p>
                 <input id="makeChanges" type="button" value="Add Item" onclick="OnUserClickAddItem();" />
             </p>
         </form>
+        <hr>
+        <p>Footer</p>
+
         <script>
-        	items = document.getElementsByClassName('item');
-        	for(var i = 0; i < items.length; i++) {
-	            var item = items[i];
-	            item.onclick = function(e) {
-	            	e.preventDefault();
-	                document.getElementById( "name" ).value = item.innerHTML;
-	                document.getElementById( "makeChanges" ).value = "Edit Item";
-	            }
-	        }
+        	var rightArrow = "▷";
+        	var downArrow = "▽";
 
+        	$(".category").on("click", function(){
+        		changeArrow($(this));
+        		$(this).parent().find(".item-list").toggle();
+        	});
 
+        	$(".item").on("click", function(){
+        		var num = $(this).text().split(' ')[1];
+                $("#name").val($(this).text());
+                $("#description").val("Description" + num);
+                $("#examples").val("Example" + num);
+                $("#category").val("Example" + (num % 5 + 1));
+                changeSubcategories($("#category"), $("#subcategory"));
+                $("#snapEligible").prop("checked", true);
+
+                $("#makeChanges").val("Edit Item");
+                $("#searchAddEdit").text("Edit");
+                $("#clearSelection").show();
+        	});
+
+        	$("#clearSelection").on("click", function(){
+        		$("#name").val("");
+                $("#description").val("");
+                $("#examples").val("");
+                $("#category").val("Select");
+                changeSubcategories($("#category"), $("#subcategory"));
+                $("#needsLicense").prop("checked", false);
+                $("#temperatureControl").prop("checked", false);
+                $("#snapEligible").prop("checked", false);
+                $("#needsTested").prop("checked", false);
+
+                $("#makeChanges").val("Add Item");
+                $("#searchAddEdit").text("Add");
+                $("#clearSelection").hide();
+        	});
+
+        	$("#search").on("click", function(){
+        		changeArrow($("#search"));
+        		$(this).parent().find("form").toggle();
+        	});
+
+        	$("#category").on("change", function(){
+        		changeSubcategories($(this), $("#subcategory"));
+        	});
+
+        	$("#searchCategory").on("change", function(){
+        		changeSubcategories($(this), $("#searchSubcategory"));
+        	});
+
+        	$("#addExample").on("click", function(){
+        		$('<div/>').addClass('new-example')
+			    .html($('<input type="text" id="examples-'+Date.now()+'"/>'))
+    			.append($('<span/>').addClass('remove-example').text(' - Remove Example'))
+    			.insertBefore(this);
+    			$(".remove-example").on('click', function() {
+        			$(this).closest('.new-example').remove();
+    			});
+			});
+
+			function changeArrow(obj){
+        		var $arrow = obj.find("span");
+        		if ($arrow.text() === rightArrow)
+        			$arrow.text(downArrow)
+        		else 
+        			$arrow.text(rightArrow);
+        	}
+
+        	function changeSubcategories($category, $subcategories) {
+        		if ($category.val() != "Select"){
+        			$subcategories.prop("disabled", false);
+        			$subcategories.find("option").remove().end();
+        			if ($category.val() == "Category 1"){
+	        			$subcategories.append($('<option>', {value: "0", text: "Not a Sub-Category"}));
+	        			$subcategories.append($('<option>', {value: "1", text: "Sub-Category 1"}));
+	        			$subcategories.append($('<option>', {value: "2", text: "Sub-Category 2"}));
+	        		}
+	        		else if ($category.val() == "Category 2"){
+	        			$subcategories.append($('<option>', {value: "0", text: "Not a Sub-Category"}));
+	        			$subcategories.append($('<option>', {value: "3", text: "Sub-Category 3"}));
+	        			$subcategories.append($('<option>', {value: "4", text: "Sub-Category 4"}));
+	        		}
+	        		else {
+	        			$subcategories.append($('<option>', {value: "0", text: "Not a Sub-Category"}));
+	        		}
+
+        		}
+        		else{
+        			$subcategories.prop("disabled", true);
+        			$subcategories.find("option").remove().end();
+        			$subcategories.append($('<option>', {value: "0", text: "Select a Category"}));
+        		}
+        	}
+    
             function OnUserClickAddItem()
             {
                 let name = document.getElementById( "name" );
@@ -156,6 +244,14 @@
                                         snapEligiable.checked, needsTested.checked );
             }
         </script>
+        <style type="text/css">
+        	.category{list-style-type: none; cursor: pointer;}
+        	#search, #addExample, .remove-example{cursor: pointer;}
+        	.item-list{list-style-position: inside;}
+        	.item{cursor: pointer; color: blue; text-decoration: underline;}
+        	.item:hover{color: darkblue;}
+        </style>
+
     </div>
 </body>
 </html>
