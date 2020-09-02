@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="items.js"></script>
+    <link rel="stylesheet" type="text/css" href="items.css">
+    <title>Farmer's Market Application</title>
+</head>
+<body>
+    <!-- <iframe id="hiddenElementName" src="JSONCategoriesData.txt" onload="fetchData();" style="display: none;"></iframe> -->
+    <div style="text-align:center;">
+        <p>Header</p>
+        <hr>
+        <div class="add-items-section">
+            <h2 id="addItems"><span>▷</span> Add or Edit Items</h2>
+            <div id="items-section" style="display: none;">
+                <div id="search-section">
+        	        <h3 id="search"><span>▷</span> Search</h3>
+        	        <form style="display: none;">
+        	            <p>
+        	                <label>Search by Item Name</label>
+        	                <input id="textSearchItem" type="text" />
+        	            </p>
+        	            <p>
+        	                <label>Category</label>
+        	                <select id="searchCategory">
+        	                    <option>Select</option>
+        	                    <option>Category 1</option>
+        	                    <option>Category 2</option>
+        	                    <option>Category 3</option>
+        	                </select>
+        	            </p>
+        	            <p>
+        	                <label>Sub-Category</label>
+        	                <select id="searchSubcategory" disabled>
+        	                    <option>Select Category</option>
+        	                </select>
+        	            </p>
+        	            <p>
+        	                <label>Item</label>
+        	                <select id="searchItem">
+        	                    <option>Example1</option>
+        	                    <option>Example2</option>
+        	                    <option>Example3</option>
+        	                    <option>Example4</option>
+        	                    <option>Example5</option>
+        	                </select>
+        	            </p>
+        	            <p>
+        	                <input id="searchButton" type="button" value="Search" onclick="" />
+        	            </p>
+        	        </form>
+        	    </div>
+                <h3>Item List <br> <span style="font-size:.75em">Click on a item to edit it</h3>
+            	<div class="category-list">
+                    <li class="category"><span>▷</span> Category 1</li>
+                    <ul style="display: none;" class="item-list">
+                    	<li class="item">Item 1</li>
+                    	<li class="item">Item 2</li>
+                    	<li class="item">Item 3</li>
+                    </ul>
+            	</div>
+            	<div class="category-list">
+                    <li class="category"><span>▷</span> Category 2</li>
+                    <ul style="display: none;" class="item-list">
+                    	<li class="item">Item 4</li>
+                    	<li class="item">Item 5</li>
+                    	<li class="item">Item 6</li>
+                    </ul>
+                </div>
+            	<div class="category-list">
+                    <li class="category"><span>▷</span> Category 3</li>
+                    <ul style="display: none;" class="item-list">
+                    	<li class="item">Item 7</li>
+                    	<li class="item">Item 8</li>
+                    	<li class="item">Item 9</li>
+                    	<li class="item">Item 10</li>
+                    </ul>
+                </div>
+                <p>
+                    <input id="clearSelection" type="button" value="Clear Selection" style="display: none;" />
+                </p>
+                
+                <h3><span id="searchAddEdit">Add</span> Information</h3>
+                <form>
+                    <p>
+                        <label>Name</label>
+                        <input id="name" type="text" />
+                    </p>
+                    <p>
+                        <label>Description</label>
+                        <input id="description" type="text" />
+                    </p>
+                    <p>
+                        <label>Examples</label><br>
+                        <input id="examples" type="text" />
+                        <br><span id="addExample">+ Add Example</span>
+                    </p>
+                    <p>
+                        <label>Category</label>
+                        <select id="category">
+                        	<option>Select</option>
+                            <option>Category 1</option>
+                            <option>Category 2</option>
+                            <option>Category 3</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label>Sub-Category</label>
+                        <select id="subcategory" disabled>
+                        	<option>Select a Category</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label>Does it need a license?</label>
+                        <input id="needsLicense" type="checkbox" />
+                    </p>
+                    <p>
+                        <label>Does it need temperature control?</label>
+                        <input id="temperatureControl" type="checkbox" />
+                    </p>
+                    <p>
+                        <label>Is it SNAP eligible?</label>
+                        <input id="snapEligible" type="checkbox" />
+                    </p>
+                    <p>
+                        <label>Does it need tested?</label>
+                        <input id="needsTested" type="checkbox" />
+                    </p>
+                    
+                    <p>
+                        <input id="makeChanges" type="button" value="Add Item" onclick="OnUserClickAddItem();" />
+                    </p>
+                </form>
+            </div>
+            <hr>
+            <div id="categories-section">
+                <h2 id="addCategories"><span>▷</span> Add or Edit Categories</h2>
+                <form id="category-form" style="display: none;">
+                    <p>
+                        <label>Category</label>
+                        <select id="editCategory">
+                            <option>New Category</option>
+                            <option>Category 1</option>
+                            <option>Category 2</option>
+                            <option>Category 3</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label>Name</label>
+                        <input id="catname" type="text" />
+                    </p>
+                    <p>
+                        <input id="addCategory" type="button" value="Add Category" />
+                    </p>
+                    
+                </form>
+            </div>
+            <hr>
+            <div id="subcategories-section">
+                <h2 id="addSubcategories"><span>▷</span> Add or Edit Sub-Categories</h2>
+                <form id="subcategory-form" style="display: none;">
+                    <p>
+                        <label>Category</label>
+                        <select id="searchCategory">
+                            <option>Select</option>
+                            <option>Category 1</option>
+                            <option>Category 2</option>
+                            <option>Category 3</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label>Sub-Category</label>
+                        <select id="searchSubcategory" disabled>
+                            <option>Select Category</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label>Name</label>
+                        <input id="subname" type="text" />
+                    </p>
+                    <p>
+                        <input id="addSubcategory" type="button" value="Add Sub-Category" />
+                    </p>
+                    
+                </form>
+            </div>
+        </div>
+        <hr>
+        <p>Footer</p>
+    </div>
+</body>
+</html>
