@@ -20,7 +20,11 @@ var root = new tree();
 function addFoodItemToDictionary(name, description, examples, license, temperature, snap, testing, requirements){
     var foodEntry = new foodItem(name, description, examples, license, temperature, snap, testing, requirements);
     dict[name] = foodEntry;
-    console.log(dict[name].description);
+    return dict;
+}
+
+function removeFoodItemFromDictionary(name){
+    delete dict[name];
     return dict;
 }
 
@@ -40,4 +44,4 @@ function addCategory(name, type, children){
 
 }
 
-export{addFoodItemToDictionary, jsonify}
+export{addFoodItemToDictionary, removeFoodItemFromDictionary, jsonify}

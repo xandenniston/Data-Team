@@ -1,6 +1,6 @@
 import { foodItem } from './FoodItem.js';
 import {  node, tree, getChildren, findNode, addChild } from './TreeNode.js';
-import {addFoodItemToDictionary, jsonify} from './DataTree.js';
+import {addFoodItemToDictionary, jsonify, removeFoodItemFromDictionary} from './DataTree.js';
 
 function assertEqual(expected, actual, testname){
     if(expected === actual){
@@ -42,8 +42,16 @@ function testaddFoodItemToDictionary(){
     assertEqual(true, dict["testName"].snap, "testBools");
 }
 
-testaddFoodItemToDictionary();
+function testDeleteFoodItemFromDictionary(){
+    var dict = addFoodItemToDictionary("testName", "testDescription", "testExamples",true,true,true,true,[])
+    dict = addFoodItemToDictionary("testName2", "testDescription2", "testExamples2",false,false,false,false,[])
+    dict = removeFoodItemFromDictionary("testName");
+    assertEqual(undefined,dict["testName"], "testDelete");
+  
+}
 
+testaddFoodItemToDictionary();
+testDeleteFoodItemFromDictionary();
 //testAddChild();
 testNodeConstructor();
 testTreeConstructor();
