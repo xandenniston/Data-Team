@@ -51,8 +51,8 @@ $( document ).ready(function() {
 
     $("#addExample").on("click", function(){
     	$('<div/>').addClass('new-example')
-        .html($('<input type="text" id="examples-'+Date.now()+'"/>'))
-    	.append($('<span/>').addClass('remove-example').text(' - Remove Example'))
+        .html($('<input type="text" class="examples"/>'))
+    	.append($('<span/>').addClass('remove-example').text(' - Remove Example '))
     	.insertBefore(this);
     	$(".remove-example").on('click', function() {
     		$(this).closest('.new-example').remove();
