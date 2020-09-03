@@ -3,3 +3,7 @@
 .item-list {list-style-position: inside;}
 .item {cursor: pointer; color: blue; text-decoration: underline;}
 .item:hover {color: darkblue;}
+.indent {margin-left: 50px;}
+#addExample {border: solid black 1px; background: lightgrey; margin-top: 5px;}
+.remove-example {border: solid black 1px; background: #ff6961; margin-top: 5px;}
+.examples {margin-bottom: 10px; margin-right: 5px;}
