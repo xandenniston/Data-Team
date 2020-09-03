@@ -66,10 +66,41 @@ function getUpdates(){
  *  @param {string} terms - the terms to search for
  */
 function search(terms) {
-    if(data === null) throw "Data not loaded";
+    if (data === null) throw "Data not loaded";
     // TODO: Implement
+    //Split search term into individual words
+    var splitTerms = terms.split(" ");
+    var options = null;
+
+    //Search for matches for each split term in splitTerms
+    splitTerms.forEach(findTerm);
+
+    //Search through dictionary for matches for given term
+    function findTerm(term) {
+        //!!!!dict is dictionary with all food items!!!
+        for (let i = 0; i < dict.length; i++) {
+            for (let j in dict[i]) {
+                if ((dict[i][j].name).includes(term, 0)) {
+                    //check to see if it was added before
+                    if (!(options.includes(dict[i][j].name))) {
+                        options.push(dict[i][j].name);
+                    }
+                }
+                //Check if example list has term
+                else if ((dict[i][j].examples).includes(term, 0)) {
+                    //check to see if it was added before
+                    if (!(options.includes(dict[i][j].name))) {
+                        options.push(dict[i][j].name);
+                    }
+                }
+            }
+        }
+    }
+    //return list of item names (string)
+    return options;
+
     // For testing:
-    return ["Chickens (> 100)", "Chickens (< 100)", "Eggs"];
+    //return ["Chickens (> 100)", "Chickens (< 100)", "Eggs"];
 }
 
 /** @function getDataNode(identifier)
