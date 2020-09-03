@@ -2,15 +2,40 @@
 
 <html lang="en">
 <head>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+
+        hr {
+            height: 10px;
+            background-color: #ccc;
+        }
+
+        h2:before {
+            content: ' ';
+            display: block;
+            border: 10px solid #512888;
+        }
+
+        h2 {
+            color: white;
+            background-color: #512888
+        }
+
+        h2:after {
+            content: ' ';
+            display: block;
+            border: 10px solid #512888;
+            box-shadow: 5px 10px 8px black;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="items.js"></script>
     <link rel="stylesheet" type="text/css" href="items.css">
     <title>Farmer's Market Application</title>
+    <img src="https://ksuemailprod.sharepoint.com/sites/CIS642-643/Shared%20Documents/Farmers%20Market%20App/KDALogo_Blue-Gold.png" alt="alternatetext" width="187" height="112" />
 </head>
 <body>
     <!-- <iframe id="hiddenElementName" src="JSONCategoriesData.txt" onload="fetchData();" style="display: none;"></iframe> -->
     <div>
-        <p>Header</p>
         <hr>
         <div class="add-items-section">
             <h2 id="addItems"><span>▷</span> Add or Edit Items</h2>
@@ -192,7 +217,7 @@
             </div>
         </div>
         <hr>
-        <p>Footer</p>
+        <p> <img src="https://www.communications.k-state.edu/communications-solutions-and-services/logos/WhiteBackNoPClink.jpg" alt="alternatetext" width="151" height="42"/> </p>
     </div>
 </body>
 </html>
