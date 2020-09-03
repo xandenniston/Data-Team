@@ -28,9 +28,9 @@ function removeFoodItemFromDictionary(name){
     return dict;
 }
 
-function jsonify(){
-    var dictstr = JSON.stringify(dict);
-    var rootStr = JSON.stringify(t);
+function jsonify(dict4, t4){
+    var dictstr = JSON.stringify(dict4);
+    var rootStr = JSON.stringify(t4);
     var output = [];
     output[0] = dictstr;
     output[1] = rootStr;
