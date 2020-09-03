@@ -97,8 +97,8 @@ $( document ).ready(function() {
     });
 
     function changeArrow(obj, toggleArea){
-        var rightArrow = "▷";
-        var downArrow = "▽";
+        var rightArrow = "▶";
+        var downArrow = "▼";
         
     	var $arrow = obj.find("span");
     	if ($arrow.text() === rightArrow)
