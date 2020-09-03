@@ -1,3 +1,25 @@
+hr {
+    height: 10px;
+    background-color: #ccc;
+}
+
+h2:before {
+    content: ' ';
+    display: block;
+    border: 10px solid #512888;
+}
+
+h2 {
+    color: white;
+    background-color: #512888
+}
+
+h2:after {
+    content: ' ';
+    display: block;
+    border: 10px solid #512888;
+    box-shadow: 5px 10px 8px black;
+}
 .category {list-style-type: none; cursor: pointer;}
 #addItems, #search, #addExample, .remove-example, #addCategories, #addSubcategories {cursor: pointer;}
 .item-list {list-style-position: inside;}
