@@ -2,8 +2,8 @@
   * Represents an entry and has the following properties:
   * @property {string} type - should always be "entry"
   * @property {string} name - the name of the product
-  * @property {description} description - the description of the product
-  * @property {examples} examples - a list of examples 
+  * @property {string} description - the description of the product
+  * @property {string} examples - a list of examples 
   * @property {bool} license - if a license is required 
   * @property {bool} temperatureControl - if temperature control is needed 
   * @property {bool} snapEligible - if it is SNAP eligible 
