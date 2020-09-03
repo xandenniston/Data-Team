@@ -4,21 +4,21 @@ var data = null;
  *  Retrieves the data from the JSON file 
  */
 function fetchData() {
-    data ={
-        "alerts":["Example Alert!","Covid Prevention..."],
-        "updates":["Subcategory is now a Test subcategory"],
-        "data":
+    return {
+        alerts: ["Example Alert!", "Covid Prevention..."],
+        updates: ["Subcategory is now a Test subcategory"],
+        data:
         {
             "Root": {
                 type: "category",
-                name: "root", 
+                name: "root",
                 children: ["Test Category"]
             },
             "Test Category": {
                 type: "category",
                 name: "Test Category",
                 children: [
-                    "Test Category/Test SubCategory", 
+                    "Test Category/Test SubCategory",
                     "Test Entry"
                 ]
             },
@@ -38,7 +38,7 @@ function fetchData() {
                 testingRequired: false
             }
         }
-    }
+    };
     return;
     fetch('data.json').then(res => res.json()).then(dataObj => {
         data = dataObj;
