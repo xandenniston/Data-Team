@@ -30,12 +30,20 @@ function removeFoodItemFromDictionary(name){
 
 function jsonify(){
     var dictstr = JSON.stringify(dict);
-    var rootStr = JSON.stringify(root);
+    var rootStr = JSON.stringify(t);
     var output = [];
     output[0] = dictstr;
     output[1] = rootStr;
-    return output;
+    return JSON.stringify(output);
 }
+
+function parseJSON(input){
+    var a = JSON.parse(input);
+    dict = JSON.parse(a[0]);
+    t = JSON.parse(a[1]);
+    return [dict, t];
+}
+
 
 /**@function addToTree this will add a food or category. If it is a category
  * you should create a node and pass it through
@@ -50,23 +58,13 @@ function addToTree(child, path){
  *  this overload requires a path
  * @param {string} name the name of the category
  * @param {array} children the array of children
- * @param {string} path this is the path through the tree. including "root" is optional. An example "root/dairy" or simply "dairy" 
+ * @param {string} path this is the path through the tree. including "root" is optional. An example "root/dairy" or simply "dairy". If not sure, simply put "root".
  */
 function addCategory(name, children, path){
     var n = new node(name,"category",children);
     t = addToTree(n,path);
 }
 
-
-/**@function addCategory This method adds a category with its children.
- *  this overload does not require a path
- * @param {string} name the name of the category
- * @param {array} children the array of children
- */
-function addCategory(name, children){
-    var n = new node(name,"category",children);
-    t = addToTree(n,"root");
-}
 
 /**@function getCategoryChildren
  * this will get the category's children. Use this to find out what food is in a category

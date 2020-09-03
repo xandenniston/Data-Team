@@ -18,7 +18,7 @@ function testJsonify(){
     var a = [];
     var t = new tree ("testRoot");
     var dict = addFoodItemToDictionary("testName", "testDescription", "testExamples",true,false,true,true,[]);
-    a = jsonify(dict,t);
+    a = JSON.parse(jsonify(dict,t));
     console.log(a);
     var dict2 = JSON.parse(a[0]);
     assertEqual(false,dict2["testName"].temperature, "test Jsonify");
@@ -27,7 +27,7 @@ function testJsonify(){
 
 
 function testNodeConstructor(){
-    var n = new node("testNode", "testType");
+    var n = new node("testNode", "testType",[]);
     assertEqual("testNode",n.name, "testNodeConstructorName");
     assertEqual(null,n.parent,"testNodeConstructorParent");
     assertEqual([].length,n.children.length,"testNodeConstructorChildren");
@@ -51,11 +51,11 @@ function testAddChild(){
 
 function testAddMultipleChildren(){
     var r = new tree("root");
-    var child = new node ("child", "child");
+    var child = new node ("child", "child",[]);
     r = addChild("root", child,r);
-    child = new node ("child2", "child2");
+    child = new node ("child2", "child2",[]);
     r = addChild("root", child,r);
-    child = new node ("child3", "child3");
+    child = new node ("child3", "child3",[]);
     r = addChild("root", child,r);
     assertEqual("child", r.root.children[0].name, "testAddMultipleChildren1");
     assertEqual("child2", r.root.children[1].name, "testAddMultipleChildren2");
@@ -65,7 +65,7 @@ function testAddMultipleChildren(){
 
 function testAddFoodNameToTree(){
     var r = new tree("root");
-    var child = new node ("category", "category");
+    var child = new node ("category", "category", []);
     r = addChild("root", child,r);
     r = addChild("root/category","testFood",r);
     assertEqual("testFood", r.root.children[0].children[0], "testAddFoodItemToTree");
@@ -73,15 +73,15 @@ function testAddFoodNameToTree(){
 
 function testGetChildren(){
     var r = new tree("root");
-    var child = new node ("category", "category");
+    var child = new node ("category", "category", []);
     r = addChild("root", child,r);
     r = addChild("category","testFood",r);
     r = addChild("root/category","testFood2",r);
     r = addChild("root/category","testFood3",r);
     r = addChild("root/category","testFood4",r);
     r = addChild("root/category","testFood5",r);
-    assertEqual(["testFood","testFood2","testFood3","testFood4","testFood5"], getChildren("root/category", r), "testGetChildren");
-    //might need to visually inspect if fails
+    var c =  getChildren("root/category", r);
+    assertEqual("testFood3", c[2], "testGetChildren");
 }
 
 

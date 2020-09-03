@@ -6,12 +6,6 @@
  * @param type the type of the category. This will probably be "category" if you are using this. "root" is another type that is made during the tree constructor
  */
 class node {
-    constructor(name, type) {
-        this.name = name;
-        this.parent = null;
-        this.children = [];
-        this.type = type;
-    }
     constructor(name,type,children){
         this.name = name;
         this.parent = null;
@@ -26,7 +20,7 @@ class node {
  */
 class tree {
     constructor(name) {
-        var n = new node(name, "root");
+        var n = new node(name, "root", []);
         this.root = n;
     }
 }
@@ -107,13 +101,13 @@ function removeChild(path,name, r){
             }
         });
     }
-
-    current.children.forEach(element => {
-        if(name === element.name){
-            delete element;
-        }
-    });
-
+    var i = 0;
+    var check = current.children[i].name;
+    while(check != name){
+        i++
+    }
+    
+    delete current.children[i];
     return r;
 }
 
