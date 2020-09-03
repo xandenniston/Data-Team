@@ -49,6 +49,10 @@ $( document ).ready(function() {
     	changeSubcategories($(this), $("#searchSubcategory"));
     });
 
+    $("#editCat").on("change", function(){
+        changeSubcategories($(this), $("#editSubcat"));
+    });
+
     $("#addExample").on("click", function(){
     	$('<div/>').addClass('new-example')
         .html($('<input type="text" class="examples"/>'))
@@ -106,7 +110,7 @@ $( document ).ready(function() {
     	else 
     		$arrow.text(rightArrow);
 
-        obj.parent().find(toggleArea).toggle();
+        obj.parent().find(toggleArea).toggle("slow");
     }
 
     function changeSubcategories($category, $subcategories) {
