@@ -63,6 +63,16 @@ $( document ).ready(function() {
     	});
     });
 
+    $("#addReq").on("click", function(){
+        $('<div/>').addClass('new-req')
+        .html($('<textarea id="req" class="requirements" name="description" rows="2" cols="40"></textarea>'))
+        .append($('<span/>').addClass('remove-req').text(' - Remove Example '))
+        .insertBefore(this);
+        $(".remove-req").on('click', function() {
+            $(this).closest('.new-req').remove();
+        });
+    });
+
     $("#editCategory").on("change", function(){
         if ($(this).val() == "New Category"){
             $("#catname").val("");
@@ -98,6 +108,18 @@ $( document ).ready(function() {
 
     $("#addSubcategories").on("click", function() {
         changeArrow($(this), "#subcategory-form");
+    });
+
+    $("#makeChanges").on("click", function() {
+        $("#itemSuccess").text("Item " + $(this).val().split(" ")[0] + "ed. Make sure to download the file at the top");
+    });
+
+    $("#addCategory").on("click", function() {
+        $("#categorySuccess").text("Category " + $(this).val().split(" ")[0] + "ed. Make sure to download the file at the top");
+    });
+
+    $("#addSubcategory").on("click", function() {
+        $("#subcategorySuccess").text("Sub-Category " + $(this).val().split(" ")[0] + "ed. Make sure to download the file at the top");
     });
 
     function changeArrow(obj, toggleArea){

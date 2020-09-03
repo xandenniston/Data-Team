@@ -12,6 +12,8 @@
     <!-- <iframe id="hiddenElementName" src="JSONCategoriesData.txt" onload="fetchData();" style="display: none;"></iframe> -->
     <div>
         <img src="https://images.squarespace-cdn.com/content/v1/55464a70e4b0325625f5cc76/1594912220437-AF0I7IMMZXDBEU4CYAAG/ke17ZwdGBToddI8pDm48kJCiOAyW4OM9WPAJge-IoLpZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIhFl55zA7Im2wBnv_kx87bDE-LtIqB2_PMc4bIUdpwXE/KDA+Logo+Blue-Gold.png" alt="alternatetext" width="187" height="112" />
+        <br><br>
+        <input id="download" type="button" value="Download File" onclick="DownloadJSON();" />
         <div class="add-items-section">
             <h2 id="addItems"><span>▶</span> Add or Edit Items</h2>
             <div id="items-section" class="indent" style="display: none;">
@@ -22,6 +24,7 @@
         	                <label>Search by Item Name</label>
         	                <input id="textSearchItem" type="text" />
         	            </p>
+                        OR
         	            <p>
         	                <label>Category</label>
         	                <select id="searchCategory">
@@ -128,9 +131,16 @@
                         <label>Does it need tested?</label>
                         <input id="needsTested" type="checkbox" />
                     </p>
+
+                    <p>
+                        <label>Additional Requirements</label><br>
+                        <textarea id="req" class="requirements" name="description" rows="2" cols="40"></textarea>
+                        <br><span id="addReq"> + Add Requirement </span>
+                    </p>
                     
                     <p>
-                        <input id="makeChanges" type="button" value="Add Item" onclick="OnUserClickAddItem();" />
+                        <input id="makeChanges" type="button" value="Add Item" />
+                        <p id="itemSuccess"></p>
                     </p>
                 </form>
             </div>
@@ -153,6 +163,8 @@
                         </p>
                         <p>
                             <input id="addCategory" type="button" value="Add Category" />
+                            <p id="categorySuccess"></p>
+
                         </p>
                         
                     </form>
@@ -183,6 +195,7 @@
                         </p>
                         <p>
                             <input id="addSubcategory" type="button" value="Add Sub-Category" />
+                            <p id="subcategorySuccess"></p>
                         </p>
                         
                     </form>
