@@ -12,7 +12,7 @@ $( document ).ready(function() {
         $("#name").val($(this).text());
         $("#description").val("Description" + num);
         $("#examples").val("Example" + num);
-        $("#category").val("Example" + (num % 5 + 1));
+        $("#category").val("Category " + (num % 3 + 1));
         changeSubcategories($("#category"), $("#subcategory"));
         $("#snapEligible").prop("checked", true);
 
