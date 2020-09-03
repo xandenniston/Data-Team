@@ -21,7 +21,7 @@ h2:after {
     box-shadow: 5px 10px 8px black;
 }
 .category {list-style-type: none; cursor: pointer;}
-#addItems, #search, #addExample, .remove-example, #addCategories, #addSubcategories {cursor: pointer;}
+#search, #addExample, .remove-example {cursor: pointer;}
 .item-list {list-style-position: inside;}
 .item {cursor: pointer; color: blue; text-decoration: underline;}
 .item:hover {color: darkblue;}
@@ -29,3 +29,4 @@ h2:after {
 #addExample {border: solid black 1px; background: lightgrey; margin-top: 5px;}
 .remove-example {border: solid black 1px; background: #ff6961; margin-top: 5px;}
 .examples {margin-bottom: 10px; margin-right: 5px;}
+#addItems, #addCategories, #addSubcategories {cursor: pointer; padding-left: 10px;}
