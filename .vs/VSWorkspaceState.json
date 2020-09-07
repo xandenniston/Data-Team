@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Data Files",
-    "\\Data Files\\dist"
+    "\\Data Files\\dist",
+    "\\WebPage"
   ],
-  "SelectedNode": "\\EditItems.html",
+  "SelectedNode": "\\Data Files\\dist\\Controller.js",
   "PreviewInSolutionExplorer": false
 }
