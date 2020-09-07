@@ -153,7 +153,7 @@
                             <input id="catname" type="text" />
                         </p>
                         <p>
-                            <input id="addCategory" type="button" value="Add Category" />
+                            <input id="addCategory" type="button" value="Save Changes" />
                         <p id="categorySuccess"></p>
 
                         </p>
@@ -182,7 +182,7 @@
                             <input id="subname" type="text" />
                         </p>
                         <p>
-                            <input id="addSubcategory" type="button" value="Add Sub-Category" />
+                            <input id="addSubcategory" type="button" value="Save Changes" />
                         <p id="subcategorySuccess"></p>
                         </p>
 
@@ -202,6 +202,16 @@
             let categoryTree = new tree("root");
             let itemDictionary = jsonData.data.FoodItems;
             categoryTree.root.children = jsonData.data.Nodes;
+
+            buildPage(categoryTree, itemDictionary);
+        }
+
+        /** @function buildPage
+         * Build page based on current JSON structure
+         * @param {Tree} categoryTree - The category tree to traverse
+         * @param {Dictionary} itemDictionary - The dictionary of food items
+         */
+        function buildPage(categoryTree, itemDictionary) {
             populateUICategories(categoryTree);
         }
 
