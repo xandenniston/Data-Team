@@ -16,7 +16,6 @@ $( document ).ready(function() {
         changeSubcategories($("#category"), $("#subcategory"));
         $("#snapEligible").prop("checked", true);
 
-        $("#makeChanges").val("Edit Item");
         $("#searchAddEdit").text("Edit");
         $("#clearSelection").show();
     });
@@ -32,7 +31,6 @@ $( document ).ready(function() {
         $("#snapEligible").prop("checked", false);
         $("#needsTested").prop("checked", false);
 
-        $("#makeChanges").val("Add Item");
         $("#searchAddEdit").text("Add");
         $("#clearSelection").hide();
     });
@@ -76,11 +74,9 @@ $( document ).ready(function() {
     $("#editCategory").on("change", function(){
         if ($(this).val() == "New Category"){
             $("#catname").val("");
-            $("#addCategory").val("Add Category");
         }
         else {
             $("#catname").val($(this).val())
-            $("#addCategory").val("Edit Category");
         }
     });
 
@@ -94,11 +90,9 @@ $( document ).ready(function() {
         var $selected = $("#searchSubcategory option:selected");
         if ($selected.text() == "New Sub-Category"){
             $("#subname").val("");
-            $("#addSubcategory").val("Add Category");
         }
         else {
             $("#subname").val($selected.text())
-            $("#addSubcategory").val("Edit Category");
         }
     });
 
@@ -111,15 +105,15 @@ $( document ).ready(function() {
     });
 
     $("#makeChanges").on("click", function() {
-        $("#itemSuccess").text("Item " + $(this).val().split(" ")[0] + "ed. Make sure to download the file at the top");
+        $("#itemSuccess").text("Item Saved. Make sure to download the file at the top");
     });
 
     $("#addCategory").on("click", function() {
-        $("#categorySuccess").text("Category " + $(this).val().split(" ")[0] + "ed. Make sure to download the file at the top");
+        $("#categorySuccess").text("Category Saved. Make sure to download the file at the top");
     });
 
     $("#addSubcategory").on("click", function() {
-        $("#subcategorySuccess").text("Sub-Category " + $(this).val().split(" ")[0] + "ed. Make sure to download the file at the top");
+        $("#subcategorySuccess").text("Sub-Category Saved. Make sure to download the file at the top");
     });
 
     function changeArrow(obj, toggleArea){
