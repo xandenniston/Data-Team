@@ -17,10 +17,19 @@ function assertEqual(expected, actual, testname){
 function testJsonify(){
     var a = [];
     var t = new tree ("testRoot");
+    var t2 = new tree("test");
     var dict = addFoodItemToDictionary("testName", "testDescription", "testExamples",true,false,true,true,[]);
-    a = JSON.parse(jsonify(dict,t));
+
+     var child = new node ("child", "child");
+    t = addChild("root", child,t);
+    console.log(t);
+    var json = jsonify(dict,t);
+    a = JSON.parse(json);
+    console.log(json);
     console.log(a);
     var dict2 = JSON.parse(a[0]);
+    var t2 = JSON.parse(a[1]);
+    console.log(t2);
     assertEqual(false,dict2["testName"].temperature, "test Jsonify");
     //console.log(a); //use this to inspect JSON manually
 }
@@ -60,6 +69,7 @@ function testAddMultipleChildren(){
     assertEqual("child", r.root.children[0].name, "testAddMultipleChildren1");
     assertEqual("child2", r.root.children[1].name, "testAddMultipleChildren2");
     assertEqual("child3", r.root.children[2].name, "testAddMultipleChildren3");
+    console.log(r);
 
 }
 

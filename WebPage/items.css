@@ -1,9 +1,33 @@
+hr {
+    height: 10px;
+    background-color: #ccc;
+}
+
+h2:before {
+    content: ' ';
+    display: block;
+    border: 10px solid #512888;
+}
+
+h2 {
+    color: white;
+    background-color: #512888
+}
+
+h2:after {
+    content: ' ';
+    display: block;
+    border: 10px solid #512888;
+    box-shadow: 5px 10px 8px black;
+}
 .category {list-style-type: none; cursor: pointer;}
-#addItems, #search, #addExample, .remove-example, #addCategories, #addSubcategories {cursor: pointer;}
+#search {cursor: pointer;}
 .item-list {list-style-position: inside;}
 .item {cursor: pointer; color: blue; text-decoration: underline;}
 .item:hover {color: darkblue;}
 .indent {margin-left: 50px;}
-#addExample {border: solid black 1px; background: lightgrey; margin-top: 5px;}
-.remove-example {border: solid black 1px; background: #ff6961; margin-top: 5px;}
+#addExample, #addReq {cursor: pointer; border: solid black 1px; background: lightgrey; margin-top: 5px;}
+.remove-example, .remove-req {cursor: pointer; border: solid black 1px; background: #ff6961; margin-top: 5px;}
 .examples {margin-bottom: 10px; margin-right: 5px;}
+.requirements {margin-bottom: 0px; margin-right: 5px;}
+#addItems, #addCategories, #addSubcategories {cursor: pointer; padding-left: 10px;}

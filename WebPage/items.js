@@ -12,7 +12,7 @@ $( document ).ready(function() {
         $("#name").val($(this).text());
         $("#description").val("Description" + num);
         $("#examples").val("Example" + num);
-        $("#category").val("Example" + (num % 5 + 1));
+        $("#category").val("Category " + (num % 3 + 1));
         changeSubcategories($("#category"), $("#subcategory"));
         $("#snapEligible").prop("checked", true);
 
@@ -49,6 +49,10 @@ $( document ).ready(function() {
     	changeSubcategories($(this), $("#searchSubcategory"));
     });
 
+    $("#editCat").on("change", function(){
+        changeSubcategories($(this), $("#editSubcat"));
+    });
+
     $("#addExample").on("click", function(){
     	$('<div/>').addClass('new-example')
         .html($('<input type="text" class="examples"/>'))
@@ -57,6 +61,16 @@ $( document ).ready(function() {
     	$(".remove-example").on('click', function() {
     		$(this).closest('.new-example').remove();
     	});
+    });
+
+    $("#addReq").on("click", function(){
+        $('<div/>').addClass('new-req')
+        .html($('<textarea id="req" class="requirements" name="description" rows="2" cols="40"></textarea>'))
+        .append($('<span/>').addClass('remove-req').text(' - Remove Example '))
+        .insertBefore(this);
+        $(".remove-req").on('click', function() {
+            $(this).closest('.new-req').remove();
+        });
     });
 
     $("#editCategory").on("change", function(){
@@ -96,9 +110,21 @@ $( document ).ready(function() {
         changeArrow($(this), "#subcategory-form");
     });
 
+    $("#makeChanges").on("click", function() {
+        $("#itemSuccess").text("Item " + $(this).val().split(" ")[0] + "ed. Make sure to download the file at the top");
+    });
+
+    $("#addCategory").on("click", function() {
+        $("#categorySuccess").text("Category " + $(this).val().split(" ")[0] + "ed. Make sure to download the file at the top");
+    });
+
+    $("#addSubcategory").on("click", function() {
+        $("#subcategorySuccess").text("Sub-Category " + $(this).val().split(" ")[0] + "ed. Make sure to download the file at the top");
+    });
+
     function changeArrow(obj, toggleArea){
-        var rightArrow = "▷";
-        var downArrow = "▽";
+        var rightArrow = "▶";
+        var downArrow = "▼";
         
     	var $arrow = obj.find("span");
     	if ($arrow.text() === rightArrow)
@@ -106,7 +132,7 @@ $( document ).ready(function() {
     	else 
     		$arrow.text(rightArrow);
 
-        obj.parent().find(toggleArea).toggle();
+        obj.parent().find(toggleArea).toggle("slow");
     }
 
     function changeSubcategories($category, $subcategories) {
