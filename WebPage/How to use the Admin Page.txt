@@ -1,0 +1,20 @@
+How to use the Admin Page of the Website
+
+It's set up right now to Add or Edit Items, Categories, and Sub-Categories, but the functions haven't been implemented.
+
+To Add Items Click on the Add or Edit Items Tab and then fill out the form and click save.
+At the top it will show that it's been added after the file is downloaded and reuploaded to the server.
+
+To Edit Items, either Search for the item you want to edit or on the item list click on the Category and then the Item.
+Either way it will fill in the form for you. Edit the item and click save and it will show that it was changed at the top.
+
+To Add Categories click on the Add or Edit Categories tab and leave it as New Categories and type in the name and click save.
+
+To Add Sub-Categories click on the tab and click on the Category it goes under, then have it be New Sub-Category.
+Type in the name of the Sub-Category and click save.
+
+To Edit either a Cateogry or Sub-Category just click on the corresponding Category or Sub-Category and it will fill in the box.
+Edit the name to what you want and click save.
+
+To make the changes permanent at the top there is a list of changes, and if you made a mistake, it can be removed,
+or you can download the file to replace the old file on the server and it will make the changes permanent.
