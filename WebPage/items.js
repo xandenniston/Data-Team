@@ -4,11 +4,11 @@ $( document ).ready(function() {
     });
 
     $(".category").on("click", function(){
-    	changeArrow($(this), ".item-list");
+        changeArrow($(this), ".item-list");
     });
 
     $(".item").on("click", function(){
-    	var num = $(this).text().split(' ')[1];
+        var num = $(this).text().split(' ')[1];
         $("#name").val($(this).text());
         $("#description").val("Description" + num);
         $("#examples").val("Example" + num);
@@ -21,7 +21,7 @@ $( document ).ready(function() {
     });
 
     $("#clearSelection").on("click", function(){
-    	$("#name").val("");
+        $("#name").val("");
         $("#description").val("");
         $("#examples").val("");
         $("#category").val("Select");
@@ -36,29 +36,38 @@ $( document ).ready(function() {
     });
 
     $("#search").on("click", function(){
-    	changeArrow($("#search"), "form");
+        changeArrow($("#search"), "form");
     });
 
     $("#category").on("change", function(){
-    	changeSubcategories($(this), $("#subcategory"));
+        changeSubcategories($(this), $("#subcategory"));
     });
 
     $("#searchCategory").on("change", function(){
-    	changeSubcategories($(this), $("#searchSubcategory"));
+        changeSubcategories($(this), $("#searchSubcategory"));
     });
 
     $("#editCat").on("change", function(){
         changeSubcategories($(this), $("#editSubcat"));
     });
 
+     $("#editSubcat").on("change", function(){
+        if ($(this).val() == "New Sub-Category"){
+            $("#subname").val("");
+        }
+        else {
+            $("#subname").val($(this).val())
+        }
+    });
+
     $("#addExample").on("click", function(){
-    	$('<div/>').addClass('new-example')
+        $('<div/>').addClass('new-example')
         .html($('<input type="text" class="examples"/>'))
-    	.append($('<span/>').addClass('remove-example').text(' - Remove Example '))
-    	.insertBefore(this);
-    	$(".remove-example").on('click', function() {
-    		$(this).closest('.new-example').remove();
-    	});
+        .append($('<span/>').addClass('remove-example').text(' - Remove Example '))
+        .insertBefore(this);
+        $(".remove-example").on('click', function() {
+            $(this).closest('.new-example').remove();
+        });
     });
 
     $("#addReq").on("click", function(){
@@ -106,53 +115,79 @@ $( document ).ready(function() {
 
     $("#makeChanges").on("click", function() {
         $("#itemSuccess").text("Item Saved. Make sure to download the file at the top");
+        $("#changesHeader").show();
+        $("#changes").append($("<li class='change'>"+$("#name").val()+" - <i>"+$("#searchAddEdit").text()+"ed</i> <span class='remove-change'> - Remove Change</span></li"))
+        $(".remove-change").on('click', function() {
+            $(this).closest('.change').remove();
+        });
     });
 
     $("#addCategory").on("click", function() {
         $("#categorySuccess").text("Category Saved. Make sure to download the file at the top");
+        $("#changesHeader").show();
+        var change = ""
+        if ($("#editCategory").val() === "New Category")
+            change = "Added"
+        else
+            change = "Edited"
+        $("#changes").append($("<li class='change'>"+$("#catname").val()+" - <i>"+change+"</i> <span class='remove-change'> - Remove Change</span></li"))
+        $(".remove-change").on('click', function() {
+            $(this).closest('.change').remove();
+        });
     });
 
     $("#addSubcategory").on("click", function() {
         $("#subcategorySuccess").text("Sub-Category Saved. Make sure to download the file at the top");
+        $("#changesHeader").show();
+        var change = ""
+        console.log($("#editSubcat").val())
+        if ($("#editSubcat").val() == 0)
+            change = "Added"
+        else
+            change = "Edited"
+        $("#changes").append($("<li class='change'>"+$("#subname").val()+" - <i>"+change+"</i> <span class='remove-change'> - Remove Change</span></li"))
+        $(".remove-change").on('click', function() {
+            $(this).closest('.change').remove();
+        });
     });
 
     function changeArrow(obj, toggleArea){
         var rightArrow = "▶";
         var downArrow = "▼";
         
-    	var $arrow = obj.find("span");
-    	if ($arrow.text() === rightArrow)
-    		$arrow.text(downArrow)
-    	else 
-    		$arrow.text(rightArrow);
+        var $arrow = obj.find("span");
+        if ($arrow.text() === rightArrow)
+            $arrow.text(downArrow)
+        else 
+            $arrow.text(rightArrow);
 
         obj.parent().find(toggleArea).toggle("slow");
     }
 
     function changeSubcategories($category, $subcategories) {
-    	if ($category.val() != "Select"){
-    		$subcategories.prop("disabled", false);
-    		$subcategories.find("option").remove().end();
-    		if ($category.val() == "Category 1"){
-    			$subcategories.append($('<option>', {value: "0", text: "Not a Sub-Category"}));
-    			$subcategories.append($('<option>', {value: "1", text: "Sub-Category 1"}));
-    			$subcategories.append($('<option>', {value: "2", text: "Sub-Category 2"}));
-    		}
-    		else if ($category.val() == "Category 2"){
-    			$subcategories.append($('<option>', {value: "0", text: "Not a Sub-Category"}));
-    			$subcategories.append($('<option>', {value: "3", text: "Sub-Category 3"}));
-    			$subcategories.append($('<option>', {value: "4", text: "Sub-Category 4"}));
-    		}
-    		else {
-    			$subcategories.append($('<option>', {value: "0", text: "Not a Sub-Category"}));
-    		}
+        if ($category.val() != "Select"){
+            $subcategories.prop("disabled", false);
+            $subcategories.find("option").remove().end();
+            if ($category.val() == "Dairy"){
+                $subcategories.append($('<option>', {value: "0", text: "New Sub-Category"}));
+                $subcategories.append($('<option>', {value: "1", text: "Sub-Category 1"}));
+                $subcategories.append($('<option>', {value: "2", text: "Sub-Category 2"}));
+            }
+            else if ($category.val() == "Poultry"){
+                $subcategories.append($('<option>', {value: "0", text: "New Sub-Category"}));
+                $subcategories.append($('<option>', {value: "3", text: "Sub-Category 3"}));
+                $subcategories.append($('<option>', {value: "4", text: "Sub-Category 4"}));
+            }
+            else {
+                $subcategories.append($('<option>', {value: "0", text: "New a Sub-Category"}));
+            }
 
-    	}
-    	else{
-    		$subcategories.prop("disabled", true);
-    		$subcategories.find("option").remove().end();
-    		$subcategories.append($('<option>', {value: "0", text: "Select a Category"}));
-    	}
+        }
+        else{
+            $subcategories.prop("disabled", true);
+            $subcategories.find("option").remove().end();
+            $subcategories.append($('<option>', {value: "0", text: "Select a Category"}));
+        }
     }
 
     function OnUserClickAddItem()
