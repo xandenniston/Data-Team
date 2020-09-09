@@ -80,6 +80,14 @@ function addChild(path, child, r){
     return r;
 }
 
+
+/**@function removeChild
+ * This function removes a child at a given path
+ * 
+ * @param {the path to remove from} path 
+ * @param {the name of the node being removed} name 
+ * @param {the tree being removed from} r 
+ */
 function removeChild(path,name, r){
     var pathString = new String();
     var current = r.root;

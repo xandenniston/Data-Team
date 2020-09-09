@@ -23,11 +23,22 @@ function addFoodItemToDictionary(name, description, examples, license, temperatu
     return dict;
 }
 
+/**@function removeFoodItemFromDictionary
+ * this function removes a food item from the dictionary
+ * 
+ * @param {string} name the name of the item being removed. 
+ */
 function removeFoodItemFromDictionary(name){
     delete dict[name];
     return dict;
 }
 
+/**@function jsonify
+ * this function turns the tree and dictionary into a json object. They are returned as a serialized array.
+ * 
+ * @param {dictionary} dict4 the dictionary to serialize 
+ * @param {tree} t4 the tree to serialzie 
+ */
 function jsonify(dict4, t4){
     var dictstr = JSON.stringify(dict4);
     var rootStr = JSON.stringify(t4);
@@ -37,6 +48,11 @@ function jsonify(dict4, t4){
     return JSON.stringify(output);
 }
 
+/**@parseJson
+ * this function parses a JSON object into a tree and dictionary.
+ * 
+ * @param {string} input the json string
+ */
 function parseJSON(input){
     var a = JSON.parse(input);
     dict = JSON.parse(a[0]);
