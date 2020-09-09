@@ -27,7 +27,7 @@ h2:after {
 .item:hover {color: darkblue;}
 .indent {margin-left: 50px;}
 #addExample, #addReq {cursor: pointer; border: solid black 1px; background: lightgrey; margin-top: 5px;}
-.remove-example, .remove-req {cursor: pointer; border: solid black 1px; background: #ff6961; margin-top: 5px;}
+.remove-example, .remove-req, .remove-change {cursor: pointer; border: solid black 1px; background: #ff6961; margin-top: 5px;}
 .examples {margin-bottom: 10px; margin-right: 5px;}
 .requirements {margin-bottom: 0px; margin-right: 5px;}
 #addItems, #addCategories, #addSubcategories {cursor: pointer; padding-left: 10px;}

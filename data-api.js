@@ -1,4 +1,5 @@
 var data = null;
+import { foodItem } from './FoodItem.js';
 
 /** @function fetchData 
  *  Retrieves the data from the JSON file 
@@ -61,16 +62,18 @@ function getUpdates(){
     return data.updates;
 }
 /** @function search
- *  Performs a "fuzzy" search for the specified terms, which 
- *  is probably a string of space-separated words
+ *  Performs a search for terms given. Will return array of foodItem names that match the search. 
+ *  Matches can be found if a fooditem name or examples includes one or more of the search terms given. 
  *  @param {string} terms - the terms to search for
  */
 function search(terms) {
-    if (data === null) throw "Data not loaded";
+    if (data == null) throw "Data not loaded";
     // TODO: Implement
+    //make search term all lower case
+    terms = terms.toLowerCase();
     //Split search term into individual words
     var splitTerms = terms.split(" ");
-    var options = null;
+    var options = [];
 
     //Search for matches for each split term in splitTerms
     splitTerms.forEach(findTerm);
@@ -79,28 +82,24 @@ function search(terms) {
     function findTerm(term) {
         //!!!!dict is dictionary with all food items!!!
         for (let i = 0; i < dict.length; i++) {
-            for (let j in dict[i]) {
-                if ((dict[i][j].name).includes(term, 0)) {
+                if ((dict[i].name.toLowerCase()).includes(term, 0)) {
                     //check to see if it was added before
-                    if (!(options.includes(dict[i][j].name))) {
-                        options.push(dict[i][j].name);
+                    if (!(options.includes(dict[i].name))) {
+                        options.push(dict[i].name);
                     }
                 }
                 //Check if example list has term
-                else if ((dict[i][j].examples).includes(term, 0)) {
+                else if ((dict[i].examples.toLowerCase()).includes(term, 0)) {
                     //check to see if it was added before
-                    if (!(options.includes(dict[i][j].name))) {
-                        options.push(dict[i][j].name);
+                    if (!(options.includes(dict[i].name))) {
+                        options.push(dict[i].name);
                     }
                 }
-            }
         }
     }
     //return list of item names (string)
     return options;
 
-    // For testing:
-    //return ["Chickens (> 100)", "Chickens (< 100)", "Eggs"];
 }
 
 /** @function getDataNode(identifier)
